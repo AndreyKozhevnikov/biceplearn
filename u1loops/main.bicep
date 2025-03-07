@@ -1,7 +1,8 @@
 @description('The Azure regions into which the resources should be deployed.')
 param locations array = [
-  'westus'
+  'westeurope'
   'eastus2'
+  'eastasia'
 ]
 
 @secure()
@@ -11,16 +12,6 @@ param sqlServerAdministratorLogin string
 @secure()
 @description('The administrator login password for the SQL server.')
 param sqlServerAdministratorLoginPassword string
-
-
-module databases 'modules/database.bicep' = [for location in locations: {
-  name: 'database-${location}'
-  params: {
-    location: location
-    sqlServerAdministratorLogin: sqlServerAdministratorLogin
-    sqlServerAdministratorLoginPassword: sqlServerAdministratorLoginPassword
-  }
-}]
 
 @description('The IP address range for all virtual networks to use.')
 param virtualNetworkAddressPrefix string = '10.10.0.0/16'
@@ -43,6 +34,16 @@ var subnetProperties = [for subnet in subnets: {
     addressPrefix: subnet.ipAddressRange
   }
 }]
+
+module databases 'modules/database.bicep' = [for location in locations: {
+  name: 'database-${location}'
+  params: {
+    location: location
+    sqlServerAdministratorLogin: sqlServerAdministratorLogin
+    sqlServerAdministratorLoginPassword: sqlServerAdministratorLoginPassword
+  }
+}]
+
 resource virtualNetworks 'Microsoft.Network/virtualNetworks@2024-05-01' = [for location in locations: {
   name: 'teddybear-${location}'
   location: location
