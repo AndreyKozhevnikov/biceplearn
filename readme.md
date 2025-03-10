@@ -6,7 +6,7 @@ az login --tenant 604c1504-c6a3-4080-81aa-b33091104187
 az account list 
 az account set --subscription ade79e45-e72d-49ad-8a7b-f86b98cd9d42
 
-az configure --defaults group=learn-1dd9fbbe-31fd-4eb8-853f-e8688e33b537
+az configure --defaults group="learn-1dd9fbbe-31fd-4eb8-853f-e8688e33b537"
 
 
 az deployment group create --name main --template-file main.bicep --parameters main.parameters.dev.json
