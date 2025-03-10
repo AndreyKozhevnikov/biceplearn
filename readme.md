@@ -3,7 +3,11 @@ az login
 az login --tenant 604c1504-c6a3-4080-81aa-b33091104187
 
 
-az account set --subscription 010fd40c-687a-4665-bfcf-04bffb0fbadd
+az account list 
+az account set --subscription ade79e45-e72d-49ad-8a7b-f86b98cd9d42
+
+az configure --defaults group=learn-1dd9fbbe-31fd-4eb8-853f-e8688e33b537
+
 
 az deployment group create --name main --template-file main.bicep --parameters main.parameters.dev.json
 
@@ -22,4 +26,12 @@ az keyvault secret set --vault-name my-key-vaault-test-kozh --name "sqlServerAdm
 az keyvault show --name my-key-vaault-test-kozh --query id --output tsv
 /subscriptions/bbc84a72-5cd7-4d49-8727-eb647636cbc6/resourceGroups/learn-kozhevnikov3/providers/Microsoft.KeyVault/vaults/my-key-vaault-test-kozh
 
+https://portal.azure.com/#browse/resourcegroups
 
+
+
+
+==================
+
+az configure --defaults group=learn-kozhevnikov3
+az configure --defaults group=learn-1dd9fbbe-31fd-4eb8-853f-e8688e33b537
