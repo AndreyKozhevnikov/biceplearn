@@ -33,5 +33,9 @@ https://portal.azure.com/#browse/resourcegroups
 
 ==================
 
+
+az account set --subscription bbc84a72-5cd7-4d49-8727-eb647636cbc6
+
 az configure --defaults group=learn-kozhevnikov3
 az configure --defaults group=learn-1dd9fbbe-31fd-4eb8-853f-e8688e33b537
+az configure --defaults group='rg-learn-kozhevnikov4'
